@@ -1,0 +1,75 @@
+Docker file Instructions
+--------------------------------
+these are called docker instructions or docker file keywords
+dockerfile instructions can be processed from top to bottom
+
+
+FROM - Indicates the base image for our docker file
+
+eg: tomcat, open-jdk, httpd
+
+MAINTAINER - It will be used to desribe maintainer/author
+
+eg: venkat@tr.com, kiran.b@bitsol.com
+
+COPY - It will be used to copy files from host server to the image 
+
+eg: COPY <srcfile> <dest>
+
+ADD - add also can copy files to the image from hostserver and it will download files from the remote server. 
+
+it will also copy tar file and will extract it.
+
+eg. add <url> destination add <src> <dest>
+
+RUN - instructions/commands will be executed while creating an image. we can have more than one RUN keywords in docker file
+
+RUN instruction allows you to install your application and packages requited for it. 
+It executes any commands on top of the current image and creates a new layer by committing the results. 
+Often you will find multiple RUN instructions in a Dockerfile.
+
+eg. RUN mkdir -p "$CATALINA_HOME"
+
+CMD - it will execute commands while creating the container.
+
+we will use it to start our application while creating the container
+
+eg. sh catalina.sh run  or CMD ["java", "-jar", "springapplication.jar"]
+
+
+ENTRYPOINT - entrypoint also used to execute commands
+
+
+WORKDIR -  we can set working directory for an image/container. all subsequent instructions will be processed under working directory.
+
+
+EXPOSE - which port is opened or being used in the image. <port>
+
+ENV - env is used to set environment variables. these environment variables will be availble for image or container. 
+
+eg. ENV JAVA_HOME /usr/bin/java  ENV CATALINA_HOME /usr/local/tomcat
+
+
+USER - user is used to set user for the container or image. if not specified root as default user
+
+eg. USER <username>
+
+LABEL - we can add labels to the image
+
+eg. LABEL <key> <Value>
+refer arg name here
+    LABEL branch $branchname
+    LABEL environmetname $environment
+
+
+ARG - branchname=dev
+
+ARG - environment=prod
+
+ARG - using arg we can define variables
+
+while creating an image we can pass arguments as below
+
+docker build -t <imagename> --buil-arg branchname=dev
+
+VOLUME - volume keyword is used to mount a container folder with host folder.

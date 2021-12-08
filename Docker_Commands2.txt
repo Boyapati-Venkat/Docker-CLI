@@ -1,0 +1,80 @@
+Troubleshooting
+----------------
+
+docker logs containerid/name
+docker logs --tail 10 containerid/name
+
+docker logs -f(floating) containerid/name
+
+docker top containerid/name -- it will display process details
+
+docker stats containerid/name -- it will display resource consumption details
+
+to execute command in a container
+------------------------------------
+
+docker exec  containername/id ls
+
+docker exec  containername/id pwd
+
+docker exec -it containername/id /bin/bash
+
+docker attach containername/id
+
+docker cp containername/id:filepath localmachinepath
+
+docker commit -- to get image from running container
+
+what is the difference between copy and docker cp
+-------------------------------------------------------
+
+
+set cpu and ram limit for docker containers
+------------------------------------------------
+
+
+
+what is shell form and executable form in docker
+--------------------------------------------------
+When we try to execute an instruction using the shell form, normal shell processing takes place. It calls the command /bin/sh -c {command} behind the scenes.
+
+When instruction is executed in exec form it calls executable directly, and shell processing does not happen
+
+
+
+
+Shell form
+<instruction> <command>
+ENV name John Dow
+ENTRYPOINT echo "Hello, $name"
+when container runs as docker run -it <image> will produce output
+
+Hello, John Dow
+
+Exec form
+This is the preferred form for CMD and ENTRYPOINT instructions.
+
+<instruction> ["executable", "param1", "param2", ...]
+
+ENV name John Dow
+ENTRYPOINT ["/bin/echo", "Hello, $name"]
+when container runs as docker run -it <image> will produce output
+
+Hello, $name
+
+
+what is the difference between CMD and ENTRYPOINT
+------------------------------------------------
+CMD Commands/Instructions can be overwritten while creating a container but ENTRYPOINT is opposite
+
+
+can we have both CMD and ENTRYPOINT in docker file
+---------------------------------------------------
+yes we can have but CMD instruction will be passed as an arguments to ENTRYPOINT
+
+eg.
+
+CMD ls
+ENTRYPOINT ["echo", "Hello"]
+
+bin/echo Hello ls

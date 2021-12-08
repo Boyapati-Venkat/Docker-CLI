@@ -1,0 +1,33 @@
+tool for deploying multi container docker applications
+
+it contains information about containers
+
+Docker Compose is a tool for running multi-container applications on Docker defined using the Compose file format. A Compose file is used to define how the one or more containers that make up your application are configured. Once you have a Compose file, you can create and start your application with a single command: docker-compose up.
+docker-compose installation
+
+-------------------------------
+
+sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+           or
+sudo apt-get install docker-compose
+
+docker-compose --version
+
+
+docker-compose.yaml
+----------------------------
+
+version: docker compose file format version 3 or 3.1
+
+services: 
+
+volumes:
+
+networks:
+
+
+sidercor container in kubernetes
+docker-compose config
+docker-compose up -d(detach)

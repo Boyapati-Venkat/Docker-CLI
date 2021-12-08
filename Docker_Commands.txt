@@ -1,0 +1,166 @@
+Docker Installation
+-----------------------
+1.
+
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+2.
+
+apt install docker.io -y
+systemctl restart docker
+systemctl enable docker.service
+
+docker info
+docker version
+docker --version
+docker version --format '{{.Server.Version}}'
+docker build -t(tag) imagename .
+docker pull imagename
+docker build -t <Dockerusername>/<repository>:<imagetagorname>
+docker build -t 'venkatondevops/nginxserver:1' .
+docker push 
+docker login -u <uname> -p <password> <url>
+docker images
+docker image ls
+docker image inspect imagename
+docker inspect imageid/imagename
+docker history imageid/imagename ----  to see only layers
+docker inspect containerid/containername
+docker rmi -f(force) imageid/imagename
+docker rmi -f(force) imageid/imagename imageid/imagename imageid/imagename - to delete all
+docker rmi -f $(docker images -q)
+docker images -q --  list all image ids
+docker tag image -- to tag image to the repository
+docker ps
+docker container ls
+docker container ls -a
+docker ps -a all containers
+docker ps -aq
+docker container ls -aq
+docker start containerid/name
+docker restart containerid/name
+docker stop containerid/name
+docker kill containerid/name
+docker pause containerid/name
+docker unpause containerid/name
+docker system prune -a  -- it will remove both unused and dangling images
+docker images -f dangling=true -- list dangling images
+docker rmi $(docker images -f dangling=true -q)
+docker images --quiet --filter=dangling=true | xargs --no-run-if-empty docker rmi
+docker image prune 
+docker rm -f container-name/container-id
+docker system prune ---- delte all stoped container, networks, dangling,
+docker run -d --name contname -p <hostport>:<contport> imageid
+dockertrustedregistry(Docker enterprise edition)
+docker rm $(docker ps -aq --filter status="exited")
+docker rm -f $(docker ps -aq )
+
+what is dangling images in docker.
+
+the image which doesnt have repository mapping or tagging
+docker exec -it <container_name> bash
+
+
+what is port publish or port mapping or port forwording
+-------------------------------------------------------------
+container name and host port should be unique in docker
+you cannot update the port mapping once container is created
+
+
+Docker Home directory or working directory
+-----------------------------------------------
+var/lib/docker
+
+How can we move image from one server to another with out using repo
+---------------------------------------------------------------------
+docker save -o filename.tar imagename/imageid
+then scp from source to destination
+
+docker load -i filename.tar -  in desrination
+
+
+difference between docker run and docker create
+----------------------------------------------
+docker create will only create the container but not run
+
+docker run will create and start container
+
+
+
+Docker container commands
+---------------------------
+docker run --name <containername> -p <hostport>:<containerport> imageName
+
+docker create --name <containername> -p <hostport>:<containerport> imageName
+docker start containername
+
+Docker Credential Store
+-----------------------------
+
+$HOME/.docker/config.json
+
+difference between docker kill and stop
+------------------------------------
+both are used to stop containers but stop will send 
+
+
+docker kill will stop the main entrypoint process/program abruptly
+
+docker stop will try to stop it gracefully by sending SIGTERM signal to a process to request its termination.
+
+
+It is analogous to Pulling the Plug off Desktop and Shutting down the computer
+
+Like pulling the Plug Off means hard power off, docker kill means s direct way to kill my_container, which does not attempt to shut down the process gracefully first.
+
+Shutting down the computer means sending a signal to OS for shutting down all the processes where docker stop means sending SIGTERM signal to the running container to stop the processes gracefully.
+
+Share
+
+
+telling the docker dont use cache when building docker image
+--------------------------------------------------------
+docker build -t tagname --no-cache imagename
+
+
+Docker Networking
+----------------------------------
+docker network ls
+docker inspect containername/id
+docker network create -d bridge flipkartnetwork
+docker network create -d(driver) bridge flipkartnetwork
+docker network inspect flipkartnetwork
+docker run -d --name webserver --network flipkartnetwork -p 80:80  nginx
+docker run -d --name mongo --network flipkartnetwork -p 3070:3070  mongo
+docker network connect networkname containernameinothenetwork
+docker network disconnect networkname containernameinothenetwork
+docker network rm networkname
+
+is it possible to do the volume mapping for a running container
+--------------------------------------------------------------
+port mapping and volume mapping can not be done for a running containers
+
+Docker Volumes
+--------------------------------------------------------
+Bind Mounts - is nothing but a folder/file in the host system or docker server
+
+docker volumes are suggestable when we are doing volume mapping rather than bindmount
+Voulmes - these are persistent volumes
+ Local Volumes
+ Network Volumes
+
+docker run -d --name contname -v <volumename/BindMountPath>:<containerpath> --network netwkname image
+
+docker volume ls
+docker volume create -d local <volumename>
+docker run -d --name contname -v dockervolumename:<containerpath>:ro(read only) --network netwkname image
+docker run -d --name contname -v dockervolumename:<containerpath>:rw(read write) --network netwkname image
+
+
+Docker plugins
+-------------------
+rexray is the plugin for ebs
+
+docker plugin ls
+docker volume create -d rexray/ebs volumename
