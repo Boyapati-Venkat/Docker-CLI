@@ -17,8 +17,13 @@ docker --version
 docker version --format '{{.Server.Version}}'
 docker build -t(tag) imagename .
 docker pull imagename
-docker build -t <Dockerusername>/<repository>:<imagetagorname>
+
+## To build Docker image using repository reference
+
+docker build -t <hub-user>/<repo-name>:<imagetag> <pathof docker file>
+
 docker build -t 'venkatondevops/nginxserver:1' .
+
 docker push 
 docker login -u <uname> -p <password> <url>
 docker images
