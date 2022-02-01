@@ -1,7 +1,11 @@
 ## Docker CLI Commands
-* [Docker Installation](#Docker Installation)
+*  [Docker Installation](# Docker Installation)
 * [Docker File Instructions](#Docker File Instructions)
 * [Docker CLI Commands](#Docker CLI Commands)
+## Table of contents
+* [General  info]
+* [Technologies](#technologies)
+* [Setup](#setup)
 
 ## Docker Installation
 This project is simple Lorem ipsum dolor generator.
