@@ -15,7 +15,7 @@ Project is created with:
 ## Docker CLI Commands
 To run this project, install it locally using npm:
 
-```
+```shell script
 $ docker build -t <hub-user>/<repo-name>:<imagetag> <pathof docker file>
 $ docker build -t 'venkatondevops/nginxserver:1' .
 $ docker push 
