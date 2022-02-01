@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-## Docker CLI Commands
-* [Docker InstallationGeneral  info](#Docker Installation)
-* [Docker File Instructions](#Docker File Instructions)
-* [Docker CLI Commands](#Docker CLI Commands)
 
-=======
 ## Docker Tool End to End Documentation
 * [Docker Installation](#docker-installation)
 * [Docker File Instructions](#docker-file-instructions)
@@ -512,3 +506,4 @@ To run this project, install it locally using npm:
 
 ```
   
+![](images/Kubernetes_Architecture.PNG)
