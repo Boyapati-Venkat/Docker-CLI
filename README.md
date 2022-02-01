@@ -4,8 +4,9 @@
 * [Docker CLI Commands](#docker-cli-commands)
 
 ## Docker Installation
-```
 * File1
+```
+
 tool for deploying multi container docker applications
 
 it contains information about containers
