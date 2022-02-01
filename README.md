@@ -1,4 +1,4 @@
-## Docker CLI Commands
+## Docker Tool End to End Documentation
 * [Docker Installation](#docker-installation)
 * [Docker File Instructions](#docker-file-instructions)
 * [Docker CLI Commands](#docker-cli-commands)
