@@ -1,5 +1,5 @@
 ## Docker CLI Commands
-* [Docker Installation](#docker installation)
+* [Docker Installation](#dockerinstallation)
 * [Docker File Instructions](#Docker File Instructions)
 * [Docker CLI Commands](#Docker CLI Commands)
 ## Table of contents
