@@ -3,8 +3,8 @@
 * [Docker Installation](#docker-installation)
 * [Docker File Instructions](#docker-file-instructions)
 * [Docker CLI Commands](#docker-cli-commands) <br>
--- [AmazonEC2ContainerRegistryFullAccess](https://console.aws.amazon.com/iam/home#policies/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess) <br>
->>>>>>> 6fefc85653590053f9d96cc9323afac874ea7b55
+  [AmazonEC2ContainerRegistryFullAccess](https://console.aws.amazon.com/iam/home#policies/arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryFullAccess) <br>
+
 ## Docker Installation
 * File1
 ```
